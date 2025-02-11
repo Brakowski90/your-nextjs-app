@@ -1,0 +1,99 @@
+/* styles/Navbar.module.css */
+
+.navbar {
+    padding: 1rem 2rem;
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for modern look */
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem; /* Adjust horizontal spacing between items */
+    margin: 0;
+  }
+  
+  .navbar li {
+    position: relative;
+  }
+  
+  .navbar .navLink,
+  .navbar button {
+    color: white;
+    text-decoration: none; /* Remove underline */
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 1.2rem; /* Adjust font size */
+    padding: 8px 16px; /* Adjust padding for better balance */
+    border-radius: 4px;
+    text-transform: uppercase; /* Make links appear more distinct */
+  }
+  
+  .navbar .navLink:hover,
+  .navbar button:hover {
+    color: #f44336; /* Highlight color */
+    transform: scale(1.1);
+    text-decoration: none; /* Ensure no underline on hover */
+  }
+  
+  .navbar button {
+    background-color: #f44336;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbar button:focus {
+    outline: none;
+  }
+  
+  .navbar .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+  }
+  
+  .navbar .logo:hover {
+    color: #f44336;
+  }
+  
+  /* Responsive design: Stack items vertically on small screens */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      padding: 1rem;
+    }
+  
+    .navbar ul {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+  
+    .navbar li {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .navbar .navLink,
+    .navbar button {
+      width: 100%;
+      padding: 10px 20px;
+      text-align: center;
+    }
+  
+    .navbar button {
+      font-size: 1.1rem;
+    }
+  }
+  
