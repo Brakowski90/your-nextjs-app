@@ -1,28 +1,39 @@
-// pages/protected.js
-import { getSession } from 'next-auth/react';
+//pages/protected.js
 
-export default function ProtectedPage({ session }) {
-  if (!session) {
-    return <div>You must be signed in to view this page</div>;
-  }
+import { useEffect, useState } from "react";
+import { useSession, signIn, signOut } from "next-auth/react";
 
-  return <div>Protected content</div>;
-}
+export default function ProtectedPage() {
+  const { data: session, status } = useSession();
+  const [role, setRole] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
+  useEffect(() => {
+    if (status === "authenticated") {
+      fetch("/api/auth/getUserRole")  // Update the endpoint to match your actual route
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.role) {
+            setRole(data.role);
+          } else {
+            setRole(null);
+          }
+          setLoading(false);
+        });
+    } else {
+      setLoading(false);
+    }
+  }, [status]);
 
-  // Redirect to home page if not authenticated
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
-    };
-  }
+  if (loading) return <p>Loading...</p>;
+  if (!session) return <button onClick={() => signIn("google")}>Sign in</button>;
+  if (!role) return <p>Access Denied</p>;
 
-  return {
-    props: { session },
-  };
+  return (
+    <div>
+      <h1>Welcome, {session.user.email}</h1>
+      <p>Your role: {role}</p>
+      <button onClick={() => signOut()}>Sign out</button>
+    </div>
+  );
 }

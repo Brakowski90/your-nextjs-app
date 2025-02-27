@@ -1,99 +1,75 @@
-/* styles/Navbar.module.css */
-
 .navbar {
-    padding: 1rem 2rem;
-    background-color: #333;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for modern look */
+    background-color: #333;
+    padding: 10px 20px;
+    position: relative;
+    width: 100%;
+    z-index: 1000; /* Ensure navbar appears above other elements */
   }
   
-  .navbar ul {
+  /* Navbar Links (Desktop by Default) */
+  .navLinks {
     list-style: none;
     display: flex;
-    gap: 3rem; /* Adjust horizontal spacing between items */
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 0;
     margin: 0;
+    transition: all 0.3s ease-in-out;
   }
   
-  .navbar li {
-    position: relative;
-  }
-  
-  .navbar .navLink,
-  .navbar button {
-    color: white;
-    text-decoration: none; /* Remove underline */
-    font-weight: 600;
-    transition: color 0.3s ease, transform 0.3s ease;
-    font-size: 1.2rem; /* Adjust font size */
-    padding: 8px 16px; /* Adjust padding for better balance */
-    border-radius: 4px;
-    text-transform: uppercase; /* Make links appear more distinct */
-  }
-  
-  .navbar .navLink:hover,
-  .navbar button:hover {
-    color: #f44336; /* Highlight color */
-    transform: scale(1.1);
-    text-decoration: none; /* Ensure no underline on hover */
-  }
-  
-  .navbar button {
-    background-color: #f44336;
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .navbar button:focus {
-    outline: none;
-  }
-  
-  .navbar .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: white;
-    text-transform: uppercase;
-  }
-  
-  .navbar .logo:hover {
-    color: #f44336;
-  }
-  
-  /* Responsive design: Stack items vertically on small screens */
+  /* Mobile Styles */
   @media (max-width: 768px) {
-    .navbar {
+    .navLinks {
+      display: none;
       flex-direction: column;
-      padding: 1rem;
-    }
-  
-    .navbar ul {
-      flex-direction: column;
-      gap: 1rem;
-      align-items: center;
-    }
-  
-    .navbar li {
+      position: absolute;
+      top: 60px;
+      left: 0; /* Align to the left side */
       width: 100%;
-      text-align: center;
+      background-color: #222;
+      padding: 20px 0;
+      text-align: left; /* Align text to the left */
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Optional: Add shadow for better visibility */
     }
   
-    .navbar .navLink,
-    .navbar button {
-      width: 100%;
-      padding: 10px 20px;
-      text-align: center;
+    .navLinks.open {
+      display: flex;
     }
+  }
   
-    .navbar button {
-      font-size: 1.1rem;
+  /* Navbar Buttons */
+  .navButton {
+    background-color: #f5f5f5;
+    color: black;
+    border: 2px solid black;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px black;
+    transition: 0.2s;
+  }
+  
+  .navButton:hover {
+    background-color: #ddd;
+  }
+  
+  /* Burger Menu (Hidden on Desktop) */
+  .burgerMenu {
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    color: white;
+  }
+  
+  @media (max-width: 768px) {
+    .burgerMenu {
+      display: block;
     }
   }
   

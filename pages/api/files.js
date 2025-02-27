@@ -1,3 +1,5 @@
+//pages/api/files.js
+
 import connectDB from "../../config/db";
 import File from "../../models/FileModel";
 

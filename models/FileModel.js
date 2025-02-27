@@ -1,19 +1,31 @@
+//models/FileModel.js
+
 // import mongoose from "mongoose";
 
 // const FileSchema = new mongoose.Schema({
-//   filename: String,
-//   fileUrl: String,
-//   uploadedAt: { type: Date, default: Date.now },
+//   filename: { type: String, required: true },
+//   fileUrl: { type: String, required: true },
 // });
 
-// export default mongoose.models.File || mongoose.model("File", FileSchema);
+// const File = mongoose.models.File || mongoose.model("File", FileSchema);
+
+// export default File;
+
 import mongoose from "mongoose";
 
 const FileSchema = new mongoose.Schema({
-  filename: { type: String, required: true },
-  fileUrl: { type: String, required: true },
+  filename: {
+    type: String,
+    required: true,
+  },
+  fileUrl: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    default: "", // Allows storing an editable description
+  },
 });
 
-const File = mongoose.models.File || mongoose.model("File", FileSchema);
-
-export default File;
+export default mongoose.models.File || mongoose.model("File", FileSchema);

@@ -10,9 +10,10 @@
   },
   "dependencies": {
     "dotenv": "^16.4.7",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.7",
     "multer": "^1.4.5-lts.1",
-    "next": "15.1.6",
+    "next": "^15.1.7",
     "next-auth": "^4.24.11",
     "next-connect": "^1.0.0",
     "next-intl": "^3.26.3",
@@ -20,8 +21,9 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "eslint": "^9",
-    "eslint-config-next": "15.1.6"
+    "@eslint/eslintrc": "^3.3.0",
+    "eslint": "^9.21.0",
+    "eslint-config-next": "15.1.6",
+    "eslint-plugin-next": "^0.0.0"
   }
 }
