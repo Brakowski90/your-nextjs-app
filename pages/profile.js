@@ -37,7 +37,6 @@ export default function Profile() {
       <Navbar />
       <h1>Profile Page</h1>
       <p>Email: {session.user.email}</p>
-      <p>Name: {session.user.name}</p>
       <p>Role: {role ? role : "Loading..."}</p>
     </div>
   );
